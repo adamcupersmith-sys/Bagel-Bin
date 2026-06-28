@@ -1,0 +1,475 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Bagel Bin of Voorhees – 201 Kresson Gibbsboro Rd</title>
+<link href="https://fonts.googleapis.com/css2?family=Abril+Fatface&family=DM+Sans:wght@400;500;700&display=swap" rel="stylesheet"/>
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  :root {
+    --cream: #FFF8F0;
+    --gold: #F5A623;
+    --gold-dark: #C7841A;
+    --poppy: #E8392A;
+    --poppy-dark: #B02B1F;
+    --green: #2D6A4F;
+    --green-light: #D8F3DC;
+    --ink: #1A1209;
+    --warm-gray: #F0E9DF;
+  }
+  body { font-family: 'DM Sans', sans-serif; background: var(--cream); color: var(--ink); overflow-x: hidden; }
+
+  nav {
+    background: var(--ink);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 2rem;
+    height: 60px;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+  }
+  .nav-logo { font-family: 'Abril Fatface', serif; color: var(--gold); font-size: 1.5rem; letter-spacing: 0.02em; }
+  .nav-links { display: flex; gap: 2rem; }
+  .nav-links a { color: #fff; text-decoration: none; font-size: 0.9rem; font-weight: 500; letter-spacing: 0.04em; text-transform: uppercase; opacity: 0.85; transition: opacity 0.2s, color 0.2s; }
+  .nav-links a:hover { opacity: 1; color: var(--gold); }
+
+  .hero {
+    background: var(--poppy);
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    min-height: 520px;
+    overflow: hidden;
+  }
+  .hero-text {
+    padding: 4rem 3rem 4rem 4rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+  .hero-eyebrow {
+    font-size: 0.8rem;
+    text-transform: uppercase;
+    letter-spacing: 0.14em;
+    font-weight: 700;
+    color: rgba(255,255,255,0.7);
+    margin-bottom: 1rem;
+  }
+  .hero h1 {
+    font-family: 'Abril Fatface', serif;
+    font-size: clamp(3rem, 6vw, 5.5rem);
+    color: #fff;
+    line-height: 1.0;
+    margin-bottom: 1.25rem;
+  }
+  .hero h1 span { color: var(--gold); }
+  .hero-sub {
+    font-size: 1.1rem;
+    color: rgba(255,255,255,0.88);
+    line-height: 1.6;
+    max-width: 380px;
+    margin-bottom: 2rem;
+  }
+  .btn-group { display: flex; gap: 0.75rem; flex-wrap: wrap; }
+  .btn-primary {
+    background: var(--gold);
+    color: var(--ink);
+    padding: 0.75rem 1.75rem;
+    border-radius: 4px;
+    font-weight: 700;
+    font-size: 0.95rem;
+    text-decoration: none;
+    transition: background 0.2s, transform 0.15s;
+    letter-spacing: 0.02em;
+    display: inline-block;
+  }
+  .btn-primary:hover { background: #f0b535; transform: translateY(-2px); }
+  .btn-outline {
+    background: transparent;
+    border: 2px solid rgba(255,255,255,0.6);
+    color: #fff;
+    padding: 0.75rem 1.75rem;
+    border-radius: 4px;
+    font-weight: 700;
+    font-size: 0.95rem;
+    text-decoration: none;
+    transition: border-color 0.2s, transform 0.15s;
+    display: inline-block;
+  }
+  .btn-outline:hover { border-color: #fff; transform: translateY(-2px); }
+
+  .hero-art {
+    background: var(--gold);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 2rem;
+    position: relative;
+    overflow: hidden;
+  }
+  .hero-art::before {
+    content: '';
+    position: absolute;
+    width: 500px; height: 500px;
+    border-radius: 50%;
+    background: rgba(255,255,255,0.1);
+    top: -100px; right: -100px;
+  }
+  .bagel-emoji { font-size: 10rem; text-align: center; line-height: 1; filter: drop-shadow(0 12px 24px rgba(0,0,0,0.25)); }
+  .hero-badge {
+    position: absolute;
+    bottom: 2rem; left: 2rem;
+    background: var(--ink);
+    color: #fff;
+    padding: 0.5rem 1rem;
+    border-radius: 999px;
+    font-size: 0.8rem;
+    font-weight: 700;
+    letter-spacing: 0.04em;
+  }
+
+  .ticker {
+    background: var(--gold);
+    padding: 0.6rem 0;
+    overflow: hidden;
+    white-space: nowrap;
+    border-top: 3px solid var(--ink);
+    border-bottom: 3px solid var(--ink);
+  }
+  .ticker-inner {
+    display: inline-block;
+    animation: ticker 28s linear infinite;
+    font-family: 'Abril Fatface', serif;
+    font-size: 1rem;
+    color: var(--ink);
+    letter-spacing: 0.02em;
+  }
+  @keyframes ticker { 0% { transform: translateX(0); } 100% { transform: translateX(-50%); } }
+  .ticker-dot { margin: 0 1.5rem; color: var(--poppy); }
+
+  .section-eyebrow {
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    letter-spacing: 0.16em;
+    font-weight: 700;
+    color: var(--poppy);
+    margin-bottom: 0.5rem;
+  }
+  .section-title {
+    font-family: 'Abril Fatface', serif;
+    font-size: clamp(2rem, 4vw, 3rem);
+    color: var(--ink);
+    margin-bottom: 0.5rem;
+    line-height: 1.1;
+  }
+
+  .menu-wrap { padding: 4rem 2rem; max-width: 1100px; margin: 0 auto; }
+  .menu-sub { font-size: 1rem; color: #555; margin-bottom: 2.5rem; max-width: 500px; }
+  .menu-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 1.25rem;
+  }
+  .menu-card {
+    background: #fff;
+    border-radius: 12px;
+    border: 2.5px solid var(--ink);
+    padding: 1.5rem 1.25rem;
+    transition: transform 0.2s, box-shadow 0.2s;
+  }
+  .menu-card:hover { transform: translateY(-4px); box-shadow: 6px 6px 0 var(--ink); }
+  .menu-card-icon { font-size: 2.5rem; margin-bottom: 0.75rem; }
+  .menu-card-name { font-family: 'Abril Fatface', serif; font-size: 1.2rem; color: var(--ink); margin-bottom: 0.35rem; }
+  .menu-card-desc { font-size: 0.875rem; color: #666; line-height: 1.5; }
+  .menu-card-tag {
+    display: inline-block;
+    margin-top: 0.75rem;
+    background: #FFF0ED;
+    color: var(--poppy-dark);
+    font-size: 0.75rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    padding: 0.25rem 0.6rem;
+    border-radius: 4px;
+  }
+
+  .specials-band {
+    background: var(--green);
+    padding: 3.5rem 2rem;
+    text-align: center;
+  }
+  .specials-band .section-eyebrow { color: var(--green-light); }
+  .specials-band .section-title { color: #fff; margin-bottom: 1.5rem; }
+  .specials-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 1rem;
+    max-width: 900px;
+    margin: 0 auto;
+  }
+  .special-item {
+    background: rgba(255,255,255,0.1);
+    border: 1.5px solid rgba(255,255,255,0.25);
+    border-radius: 10px;
+    padding: 1.25rem 1rem;
+  }
+  .special-day { font-size: 0.75rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.12em; color: var(--green-light); margin-bottom: 0.3rem; }
+  .special-name { font-family: 'Abril Fatface', serif; font-size: 1.1rem; color: #fff; margin-bottom: 0.25rem; }
+  .special-desc { font-size: 0.8rem; color: rgba(255,255,255,0.75); }
+
+  .about-split {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 3rem;
+    align-items: center;
+    padding: 4rem 2rem;
+    max-width: 1100px;
+    margin: 0 auto;
+  }
+  .about-accent-box {
+    background: var(--gold);
+    border-radius: 16px;
+    border: 3px solid var(--ink);
+    padding: 3rem 2.5rem;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+  }
+  .about-accent-box::after {
+    content: '🥯';
+    position: absolute;
+    font-size: 8rem;
+    bottom: -1.5rem;
+    right: -1rem;
+    opacity: 0.2;
+    pointer-events: none;
+  }
+  .about-big-num { font-family: 'Abril Fatface', serif; font-size: 5rem; color: var(--ink); line-height: 1; }
+  .about-big-label { font-size: 0.9rem; font-weight: 700; color: var(--ink); text-transform: uppercase; letter-spacing: 0.1em; margin-top: 0.25rem; }
+  .about-text p { font-size: 1.05rem; color: #3a3028; line-height: 1.75; margin-bottom: 1rem; }
+  .about-text strong { color: var(--poppy); }
+
+  .hours-section {
+    background: var(--warm-gray);
+    padding: 4rem 2rem;
+    border-top: 3px solid var(--ink);
+    border-bottom: 3px solid var(--ink);
+  }
+  .hours-head { max-width: 900px; margin: 0 auto 2rem; }
+  .hours-inner {
+    max-width: 900px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 3rem;
+    align-items: start;
+  }
+  .hours-label { font-size: 0.8rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.1em; color: #888; margin-bottom: 0.25rem; }
+  .hours-table { width: 100%; border-collapse: collapse; margin-top: 0.5rem; }
+  .hours-table tr { border-bottom: 1px solid #d6ccbe; }
+  .hours-table td { padding: 0.65rem 0; font-size: 0.95rem; }
+  .hours-table td:last-child { text-align: right; font-weight: 600; color: var(--green); }
+  .hours-table tr:last-child { border-bottom: none; }
+  .hours-note { font-size: 0.82rem; color: #888; margin-top: 1rem; }
+  .location-card {
+    background: #fff;
+    border: 2.5px solid var(--ink);
+    border-radius: 12px;
+    padding: 1.75rem;
+  }
+  .location-card h3 { font-family: 'Abril Fatface', serif; font-size: 1.4rem; margin-bottom: 1rem; }
+  .location-detail { display: flex; align-items: flex-start; gap: 0.6rem; margin-bottom: 0.75rem; font-size: 0.95rem; color: #444; }
+  .location-icon { font-size: 1.2rem; margin-top: 0.05rem; flex-shrink: 0; }
+  .map-link {
+    display: inline-block;
+    margin-top: 0.75rem;
+    background: var(--poppy);
+    color: #fff;
+    padding: 0.6rem 1.25rem;
+    border-radius: 4px;
+    font-weight: 700;
+    font-size: 0.85rem;
+    text-decoration: none;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    transition: background 0.2s;
+  }
+  .map-link:hover { background: var(--poppy-dark); }
+
+  footer {
+    background: var(--ink);
+    color: rgba(255,255,255,0.7);
+    text-align: center;
+    padding: 2.5rem 1rem;
+    font-size: 0.875rem;
+  }
+  .footer-logo { font-family: 'Abril Fatface', serif; font-size: 1.75rem; color: var(--gold); margin-bottom: 0.5rem; }
+  footer p { margin-top: 0.25rem; }
+  .footer-fine { margin-top: 1rem; font-size: 0.8rem; opacity: 0.5; }
+
+  @media (max-width: 700px) {
+    .hero { grid-template-columns: 1fr; }
+    .hero-text { padding: 2.5rem 1.5rem; }
+    .hero-art { min-height: 200px; padding: 1.5rem; }
+    .bagel-emoji { font-size: 6rem; }
+    .about-split { grid-template-columns: 1fr; }
+    .hours-inner { grid-template-columns: 1fr; }
+    .nav-links { display: none; }
+    .menu-wrap { padding: 2.5rem 1rem; }
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-logo">Bagel Bin</div>
+  <div class="nav-links">
+    <a href="#menu">Menu</a>
+    <a href="#specials">Specials</a>
+    <a href="#about">About</a>
+    <a href="#hours">Hours</a>
+  </div>
+</nav>
+
+<section class="hero">
+  <div class="hero-text">
+    <p class="hero-eyebrow">Voorhees, New Jersey</p>
+    <h1>Fresh<br/>Bagels<br/><span>Daily.</span></h1>
+    <p class="hero-sub">Hot, fresh bagels baked every morning on Kresson Gibbsboro Road. Voorhees' go-to spot for breakfast done right.</p>
+    <div class="btn-group">
+      <a href="#menu" class="btn-primary">See our menu</a>
+      <a href="#hours" class="btn-outline">Hours &amp; location</a>
+    </div>
+  </div>
+  <div class="hero-art">
+    <div class="bagel-emoji">🥯</div>
+    <div class="hero-badge">📞 (856) 346-4337</div>
+  </div>
+</section>
+
+<div class="ticker" aria-hidden="true">
+  <span class="ticker-inner">
+    EVERYTHING &nbsp;<span class="ticker-dot">●</span>&nbsp; SESAME &nbsp;<span class="ticker-dot">●</span>&nbsp; POPPY SEED &nbsp;<span class="ticker-dot">●</span>&nbsp; CINNAMON RAISIN &nbsp;<span class="ticker-dot">●</span>&nbsp; PLAIN &nbsp;<span class="ticker-dot">●</span>&nbsp; SALT &nbsp;<span class="ticker-dot">●</span>&nbsp; BLUEBERRY &nbsp;<span class="ticker-dot">●</span>&nbsp; FRENCH TOAST &nbsp;<span class="ticker-dot">●</span>&nbsp; PUMPERNICKEL &nbsp;<span class="ticker-dot">●</span>&nbsp; ONION &nbsp;<span class="ticker-dot">●</span>&nbsp; GARLIC &nbsp;<span class="ticker-dot">●</span>&nbsp; WHOLE WHEAT &nbsp;<span class="ticker-dot">●</span>&nbsp; PEANUT BUTTER &nbsp;<span class="ticker-dot">●</span>&nbsp; ASIAGO &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    EVERYTHING &nbsp;<span class="ticker-dot">●</span>&nbsp; SESAME &nbsp;<span class="ticker-dot">●</span>&nbsp; POPPY SEED &nbsp;<span class="ticker-dot">●</span>&nbsp; CINNAMON RAISIN &nbsp;<span class="ticker-dot">●</span>&nbsp; PLAIN &nbsp;<span class="ticker-dot">●</span>&nbsp; SALT &nbsp;<span class="ticker-dot">●</span>&nbsp; BLUEBERRY &nbsp;<span class="ticker-dot">●</span>&nbsp; FRENCH TOAST &nbsp;<span class="ticker-dot">●</span>&nbsp; PUMPERNICKEL &nbsp;<span class="ticker-dot">●</span>&nbsp; ONION &nbsp;<span class="ticker-dot">●</span>&nbsp; GARLIC &nbsp;<span class="ticker-dot">●</span>&nbsp; WHOLE WHEAT &nbsp;<span class="ticker-dot">●</span>&nbsp; PEANUT BUTTER &nbsp;<span class="ticker-dot">●</span>&nbsp; ASIAGO &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+  </span>
+</div>
+
+<section id="menu" class="menu-wrap">
+  <p class="section-eyebrow">What we make</p>
+  <h2 class="section-title">Built your way</h2>
+  <p class="menu-sub">Fresh bagels, generous schmears, and loaded breakfast sandwiches — all made to order.</p>
+  <div class="menu-grid">
+    <div class="menu-card">
+      <div class="menu-card-icon">🥯</div>
+      <div class="menu-card-name">Bagel &amp; Schmear</div>
+      <p class="menu-card-desc">Any bagel with your choice of cream cheese. Plain, veggie, lox, flavored, and more.</p>
+      <span class="menu-card-tag">Customer Favorite</span>
+    </div>
+    <div class="menu-card">
+      <div class="menu-card-icon">🥚</div>
+      <div class="menu-card-name">Pork Roll, Egg &amp; Cheese</div>
+      <p class="menu-card-desc">A Jersey classic — savory pork roll, fresh egg, and melted cheese on any bagel you choose.</p>
+      <span class="menu-card-tag">Must Try</span>
+    </div>
+    <div class="menu-card">
+      <div class="menu-card-icon">🥓</div>
+      <div class="menu-card-name">Bacon, Egg &amp; Cheese</div>
+      <p class="menu-card-desc">Crispy bacon, scrambled egg, and cheese — also available with turkey bacon.</p>
+      <span class="menu-card-tag">Top Seller</span>
+    </div>
+    <div class="menu-card">
+      <div class="menu-card-icon">🐟</div>
+      <div class="menu-card-name">Egg Salad &amp; Tuna</div>
+      <p class="menu-card-desc">House-made egg salad or tuna hoagie, served on your bagel of choice. Served with pickle and chips.</p>
+    </div>
+    <div class="menu-card">
+      <div class="menu-card-icon">🥪</div>
+      <div class="menu-card-name">Club Sandwich</div>
+      <p class="menu-card-desc">Turkey, ham, Swiss, bacon, lettuce, tomato, and mayo on a fresh-baked bagel.</p>
+    </div>
+    <div class="menu-card">
+      <div class="menu-card-icon">☕</div>
+      <div class="menu-card-name">Coffee &amp; More</div>
+      <p class="menu-card-desc">Fresh-brewed coffee and tea available daily. Pair with a bagel for a full breakfast.</p>
+    </div>
+  </div>
+</section>
+
+<section id="specials" class="specials-band">
+  <p class="section-eyebrow">Unique flavors</p>
+  <h2 class="section-title" style="color:#fff;">Beyond the classics</h2>
+  <div class="specials-grid">
+    <div class="special-item">
+      <div class="special-day">House Specialty</div>
+      <div class="special-name">French Toast Bagel</div>
+      <p class="special-desc">Sweet, cinnamon-kissed, and unlike anything you'll find elsewhere</p>
+    </div>
+    <div class="special-item">
+      <div class="special-day">Try It Toasted</div>
+      <div class="special-name">Cinnamon Raisin</div>
+      <p class="special-desc">Best with butter or honey walnut cream cheese</p>
+    </div>
+    <div class="special-item">
+      <div class="special-day">Fan Favorite</div>
+      <div class="special-name">Everything Bagel</div>
+      <p class="special-desc">Poppy, sesame, garlic, onion &amp; salt — the one that does it all</p>
+    </div>
+    <div class="special-item">
+      <div class="special-day">NJ Staple</div>
+      <div class="special-name">Peanut Butter Bagel</div>
+      <p class="special-desc">A unique twist that keeps regulars coming back</p>
+    </div>
+  </div>
+</section>
+
+<section id="about" class="about-split">
+  <div class="about-accent-box">
+    <div class="about-big-num">#1</div>
+    <div class="about-big-label">Bagel shop<br/>in Voorhees</div>
+  </div>
+  <div class="about-text">
+    <p class="section-eyebrow">Our story</p>
+    <h2 class="section-title">Bagels the way they should be</h2>
+    <p>Bagel Bin has been a Voorhees staple on Kresson Gibbsboro Road for years. We're a <strong>neighborhood spot</strong>, not a chain — and you'll feel the difference the moment you walk in.</p>
+    <p>We offer dine-in, takeout, and in-store pickup. Weekends get busy (and we sell out early), so come in before 10 am for the best selection. Free parking lot right out front.</p>
+    <p>We accept credit cards, Apple Pay, Android Pay, and cash.</p>
+  </div>
+</section>
+
+<section id="hours" class="hours-section">
+  <div class="hours-head">
+    <p class="section-eyebrow">Find us</p>
+    <h2 class="section-title">Hours &amp; location</h2>
+  </div>
+  <div class="hours-inner">
+    <div>
+      <p class="hours-label">Hours</p>
+      <table class="hours-table">
+        <tr><td>Monday – Friday</td><td>6:00 am – 3:00 pm</td></tr>
+        <tr><td>Saturday</td><td>6:00 am – 3:00 pm</td></tr>
+        <tr><td>Sunday</td><td>6:00 am – 3:00 pm</td></tr>
+      </table>
+      <p class="hours-note">Weekends fill up fast — arrive early for the best bagel selection. Call ahead if you're feeding a crowd.</p>
+    </div>
+    <div class="location-card">
+      <h3>Bagel Bin of Voorhees</h3>
+      <div class="location-detail"><span class="location-icon">📍</span><span>201 Kresson Gibbsboro Rd, Suite 3<br/>Voorhees Township, NJ 08043</span></div>
+      <div class="location-detail"><span class="location-icon">📞</span><span>(856) 346-4337</span></div>
+      <div class="location-detail"><span class="location-icon">🚗</span><span>Free parking lot on site</span></div>
+      <div class="location-detail"><span class="location-icon">💳</span><span>Credit cards, Apple Pay &amp; Android Pay accepted</span></div>
+      <a href="https://maps.google.com/?q=201+Kresson+Gibbsboro+Rd+Voorhees+NJ+08043" class="map-link" target="_blank" rel="noopener">Get directions →</a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="footer-logo">Bagel Bin</div>
+  <p>201 Kresson Gibbsboro Rd, Suite 3 · Voorhees, NJ 08043 · (856) 346-4337</p>
+  <p class="footer-fine">© 2026 Bagel Bin of Voorhees. All rights reserved.</p>
+</footer>
+
+</body>
+</html>
